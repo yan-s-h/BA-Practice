@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <form action="" onsubmit="signUp(event)">
+    <label for="account">帳號</label>
+    <input type="text" id="account"><br>
+    <label for="password">密碼</label>
+    <input type="password" id="password"><br>
+    <label for="passwordConfirm">確認密碼</label>
+    <input type="password" id="passwordConfirm"><br>
+    <input type="submit" value="註冊">
+    <input type="reset" value="重置">
+  </form>
+  <form action="" onsubmit="logIn(event)">
+    <label for="LoginAccount">帳號</label>
+    <input type="text" id="LoginAccount"><br>
+    <label for="LoginPassword">密碼</label>
+    <input type="password" id="LoginPassword"><br>
+    <input type="submit" value="登入">
+    <input type="reset" value="重置">
+  </form>
+  <script>
+    const data = []
+    function signUp(event) {
+      console.log(event)
+      event.preventDefault()
+      const account = document.getElementById('account').value
+      const password = document.getElementById('password').value
+      const passwordConfirm = document.getElementById('passwordConfirm').value
+      console.log(account)
+      console.log(password)
+      console.log(passwordConfirm)
+      if (account.length < 4) {
+        alert('帳號不能少於4字')
+        return
+      }
+      else if (password.length < 4) {
+        alert('密碼不能少於4字')
+        return
+      }
+      else if (passwordConfirm.length < 4) {
+        alert('密碼不能少於4字')
+        return
+      }
+      const hasUser = data.find((item) => {
+        return item.account === account
+      })
+      if (hasUser) {
+        alert('帳號已被註冊')
+        return
+      } else if (password !== passwordConfirm) {
+        alert('密碼不相等')
+        return
+      } else {
+        data.push({
+          account: account,
+          password: password
+        })
+        document.getElementById('account').value = ''
+        document.getElementById('password').value = ''
+        document.getElementById('passwordConfirm').value = ''
+        console.log(data)
+        alert('註冊成功')
+        return
+      }
+    };
+
+    function logIn(event) {
+      console.log(event)
+      event.preventDefault()
+      const LoginAccount = document.getElementById('LoginAccount').value
+      const LoginPassword = document.getElementById('LoginPassword').value
+      console.log(LoginAccount)
+      console.log(LoginPassword)
+      const success = data.find((item) => {
+        return item.account === LoginAccount && item.password === LoginPassword
+      })
+      const invalidPassword = data.find((item) => {
+        return item.account === LoginAccount
+      })
+      if (success) {
+        document.getElementById('LoginAccount').value = ''
+        document.getElementById('LoginPassword').value = ''
+        alert('登入成功')
+        return
+      } else if (invalidPassword) {
+        alert('密碼錯誤')
+        return
+      } else {
+        alert('帳號不存在')
+        return
+      }
+    }
+
+  </script>
+</body>
+
+</html>
