@@ -37,8 +37,56 @@
       <input type="submit" value="登入">
     </form>
   </div>
-  <div id="lobby"></div>
-  <div id="game"></div>
+  <div id="lobby">
+    <table>
+      <tr>
+        <td><input type="button" value="1" onclick="enterGame(1)"></td>
+        <td><input type="button" value="2" onclick="enterGame(2)"></td>
+        <td><input type="button" value="3" onclick="enterGame(3)"></td>
+        <td><input type="button" value="4" onclick="enterGame(4)"></td>
+        <td><input type="button" value="5" onclick="enterGame(5)"></td>
+      </tr>
+      <tr>
+        <td><input type="button" value="6" onclick="enterGame(6)"></td>
+        <td><input type="button" value="7" onclick="enterGame(7)"></td>
+        <td><input type="button" value="8" onclick="enterGame(8)"></td>
+        <td><input type="button" value="9" onclick="enterGame(9)"></td>
+        <td><input type="button" value="10" onclick="enterGame(10)"></td>
+      </tr>
+    </table>
+  </div>
+  <div id="game">
+    <table>
+      <tr>
+        <td>
+          <h1>井字遊戲</h1>
+          <table>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </table>
+        </td>
+        <td>房號:<span></span><br>
+          黑棋獲勝:<span>0</span><br>
+          白棋獲勝:<span>0</span><br>
+          <input type="button" value="開始遊戲"><br>
+          <input type="button" value="返回大廳" onclick="backToLobby()">
+        </td>
+      </tr>
+    </table>
+  </div>
   .classList.add
   <script>
     const userData = [{ account: 'aaaa', password: 'aaaa' }, { account: 'bbbb', password: 'bbbb' }]
